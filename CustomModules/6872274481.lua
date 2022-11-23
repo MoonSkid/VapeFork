@@ -1,9 +1,4 @@
---[[ 
-	Credits
-	Infinite Yield - Blink
-	DevForum - lots of rotation math because I hate it
-	Please notify me if you need credits
-]]
+print('Init Vape Custom by Nanderez!');
 local GuiLibrary = shared.GuiLibrary
 local players = game:GetService("Players")
 local textservice = game:GetService("TextService")
