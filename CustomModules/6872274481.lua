@@ -10657,7 +10657,7 @@ task.spawn(function()
 		notifyframelistnotifyframeaspect.BorderSizePixel = 0
 		notifyframelistnotifyframeaspect.Size = UDim2.new(1, 0, 0.6, 0)
 		notifyframelistnotifyframeaspect.Font = Enum.Font.Roboto
-		notifyframelistnotifyframeaspect.Text = "Vape Announcement"
+		notifyframelistnotifyframeaspect.Text = "VapeFork Announcement"
 		notifyframelistnotifyframeaspect.TextColor3 = Color3.fromRGB(255, 255, 255)
 		notifyframelistnotifyframeaspect.TextScaled = true
 		notifyframelistnotifyframeaspect.TextWrapped = true
