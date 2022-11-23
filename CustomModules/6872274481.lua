@@ -118,7 +118,7 @@ local function GetURL(scripturl)
 	if shared.VapeDeveloper then
 		return readfile("vape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/SkiddDev/VapeFork/build/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/MoonSkid/VapeFork/main/"..scripturl, true)
 	end
 end
 local entity = shared.vapeentity
@@ -284,7 +284,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/SkiddDev/VapeFork/build/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/MoonSkid/VapeFork/main/"..path:gsub("vape/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -9432,6 +9432,7 @@ runcode(function()
 					end
 					successfulcustom = true
 				end
+				-- Vape Custom
 				vapecapeconnection = lplr.CharacterAdded:Connect(function(char)
 					task.spawn(function()
 						pcall(function() 
@@ -10597,7 +10598,7 @@ runcode(function()
 end)
 
 task.spawn(function()
-	local url = "https://raw.githubusercontent.com/SkiddDev/VapeFork/build/CustomModules/bedwarsdata"
+	local url = "https://raw.githubusercontent.com/MoonSkid/VapeFork/main/CustomModules/bedwarsdata"
 
 	local function createannouncement(announcetab)
 		local notifyframereal = Instance.new("TextButton")
