@@ -50,7 +50,7 @@ if shared.VapeExecuted then
 			end
 			return readfile("vape/"..scripturl)
 		else
-			local res = game:HttpGet("https://raw.githubusercontent.com/SkiddDev/VapeFork/build/"..scripturl, true)
+			local res = game:HttpGet("https://raw.githubusercontent.com/MoonSkid/VapeFork/main/"..scripturl, true)
 			assert(res ~= "404: Not Found", "File not found")
 			return res
 		end
@@ -138,7 +138,7 @@ if shared.VapeExecuted then
 				textlabel:Remove()
 			end)
 			local req = requestfunc({
-				Url = "https://raw.githubusercontent.com/SkiddDev/VapeFork/build/"..path:gsub("vape/assets", "assets"),
+				Url = "https://raw.githubusercontent.com/MoonSkid/VapeFork/main/"..path:gsub("vape/assets", "assets"),
 				Method = "GET"
 			})
 			writefile(path, req.Body)
