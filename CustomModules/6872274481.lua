@@ -1,3 +1,9 @@
+--[[ 
+	Credits
+	Infinite Yield - Blink
+	DevForum - lots of rotation math because I hate it
+	Please notify me if you need credits
+]]
 local GuiLibrary = shared.GuiLibrary
 local players = game:GetService("Players")
 local textservice = game:GetService("TextService")
@@ -245,7 +251,7 @@ end
 runcode(function()
 	local textlabel = Instance.new("TextLabel")
 	textlabel.Size = UDim2.new(1, 0, 0, 36)
-	textlabel.Text = "[TIP] Always use Alts."
+	textlabel.Text = "Moderators can ban you at any time, Always use alts."
 	textlabel.BackgroundTransparency = 1
 	textlabel.ZIndex = 10
 	textlabel.TextStrokeTransparency = 0
@@ -6921,6 +6927,21 @@ runcode(function()
 	local onground = false
 	local lastonground = false
 	local alternatelist = {"Normal", "AntiCheat A", "AntiCheat B"}
+	
+	local airwalkState     = false
+	local currentPart    = nil
+	
+	glide = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "Glide",
+		["Function"] = function(callback)
+			if callback then
+				airwalkState = true
+			else
+				airwalkState = false
+			end
+		end,
+		["HoverText"] = "Makes you walk on air"
+	})
 	fly = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "Fly",
 		["Function"] = function(callback)
@@ -10656,7 +10677,7 @@ task.spawn(function()
 		notifyframelistnotifyframeaspect.BorderSizePixel = 0
 		notifyframelistnotifyframeaspect.Size = UDim2.new(1, 0, 0.6, 0)
 		notifyframelistnotifyframeaspect.Font = Enum.Font.Roboto
-		notifyframelistnotifyframeaspect.Text = "VapeFork Announcement"
+		notifyframelistnotifyframeaspect.Text = "Vape Fork Announcement"
 		notifyframelistnotifyframeaspect.TextColor3 = Color3.fromRGB(255, 255, 255)
 		notifyframelistnotifyframeaspect.TextScaled = true
 		notifyframelistnotifyframeaspect.TextWrapped = true
@@ -10778,3 +10799,47 @@ task.spawn(function()
 	end)
 end)
 
+
+
+local ContextAction = Game:GetService("ContextActionService")
+				local RunService    = Game:GetService("RunService")
+				
+				local function ForEach(t, f)
+				   for Index, Value in pairs(t) do
+					   f(Value, Index)
+				   end
+				end _G.ForEach=ForEach;
+				local function Create(ClassName)
+				   local Object = Instance.new(ClassName)
+				   return function(Properties)
+					   ForEach(Properties, function(Value, Property)
+						   Object[Property] = Value
+					   end)
+					   return Object
+				   end
+				end _G.Create=Create;
+				
+				do
+				   RunService.RenderStepped:connect(function()
+					   if airwalkState then
+						   if not currentPart then
+							   currentPart = Create "Part" {
+								   Parent = workspace.CurrentCamera;
+								   Name = "AWP";
+								   Transparency = 1;
+								   Size = Vector3.new(2, 1, 2);
+								   Anchored = true;
+							   }
+						   end
+						   local character = game.Players.LocalPlayer.Character
+						   if character then
+							   currentPart.CFrame = character.HumanoidRootPart.CFrame - Vector3.new(0, 3.6, 0)
+						   end
+					   else
+						   if currentPart then
+							   currentPart:Destroy()
+							   currentPart = nil
+						   end        
+					   end
+				   end)
+				end
